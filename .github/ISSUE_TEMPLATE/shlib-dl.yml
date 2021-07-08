@@ -4,30 +4,30 @@ title: "[BUG:LIB:DL] -  "
 labels: ["Bug:DL", "Bug"]
 body:
   - type: markdown
-      attributes:
-        value: |
-          Thanks for taking the time to fill out this bug report! 
-          Please leave the prefilled title prefix as-is.
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! 
+        Please leave the prefilled title prefix as-is.
 
   # uname-s
   - type: input
-      id: uname-s-output
-      attributes:
-        label: System Type
-        description: Output of `uname -s` command. If unable to detect or not applicable, leave the field as is.
-        value: NA
-      validations:
-        required: true
+    id: uname-s-output
+    attributes:
+      label: System Type
+      description: Output of `uname -s` command. If unable to detect or not applicable, leave the field as is.
+      value: NA
+    validations:
+      required: true
 
   # uname-m
   - type: input
-      id: uname-m-output
-      attributes:
-        label: System Architecture
-        description: Output of `uname -m` command. If unable to detect or not applicable, leave the field as is.
-        value: NA
-      validations:
-        required: true
+    id: uname-m-output
+    attributes:
+      label: System Architecture
+      description: Output of `uname -m` command. If unable to detect or not applicable, leave the field as is.
+      value: NA
+    validations:
+      required: true
 
   # detected values
   - type: dropdown
