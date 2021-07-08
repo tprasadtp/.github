@@ -1,0 +1,99 @@
+name: Bug Report - Download Library
+description: Error in mapping architecture/os to GOOS/GOARCH/GOARM or SYSTEM ARCH TRIPLE values
+title: "[BUG:LIB:DL] -  "
+labels: [Bug:DL, Bug]
+body:
+
+- type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! 
+        Please leave the prefilled title prefix as-is.
+
+# uname-s
+- type: input
+    id: uname-s-output
+    attributes:
+      label: System Type
+      description: Output of `uname -s` command. If unable to detect or not applicable, leave the field as is.
+      value: NA
+    validations:
+      required: true
+
+# uname-m
+- type: input
+    id: uname-m-output
+    attributes:
+      label: System Architecture
+      description: Output of `uname -m` command. If unable to detect or not applicable, leave the field as is.
+      value: NA
+    validations:
+      required: true
+
+# detected values
+- type: dropdown
+  id: goos-value
+  attributes:
+    label: Detected GOOS value
+    options:
+      - linux
+      - darwin
+      - windows
+      - freebsd
+      - netbsd
+      - dragonflybsd
+      - ERROR-UNKNOWN
+  validations:
+    required: true
+
+- type: dropdown
+  id: goarch-value
+  attributes:
+    label: Detected GOARCH value
+    options:
+      - amd64
+      - arm64
+      - 386
+      - arm
+      - ERROR-UNKNOWN
+  validations:
+    required: true
+
+- type: dropdown
+  id: goarm-value
+  attributes:
+    label: Detected GOARM value (This value is not displayed or popluated if not applicable)
+    options:
+      - 5
+      - 6
+      - 7
+      - 8
+      - ERROR-UNKNOWN
+      - None (not an ARM-32 bit system)      
+  validations:
+    required: true
+
+  # Logs
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste output of script. or snippet which the log message asked your to include
+      render: shell
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Any additional info
+      description: Any additional details like steps to reproduce intermittant bugs, race conditions etc.
+
+- type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: | 
+        By submitting this issue, you agree to follow code of conduct for this repository. 
+        In case the repository is missing code of conduct, Contributor Covenant code of conduct applies.
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
