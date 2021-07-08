@@ -1,7 +1,7 @@
 name: Bug Report - Download Library
 description: Error in mapping architecture/os to GOOS/GOARCH/GOARM or SYSTEM ARCH TRIPLE values
 title: "[BUG:LIB:DL] -  "
-labels: [Bug:DL, Bug]
+labels: ["Bug:DL", "Bug"]
 body:
 
 - type: markdown
