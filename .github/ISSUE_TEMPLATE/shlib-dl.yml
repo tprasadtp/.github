@@ -1,8 +1,5 @@
 name: Bug Report - Download Library
-description: |
-  * Errors in mapping architecture/os to GOOS/GOARCH/GOARM
-  * Errors in detecting SYSTEM ARCH TRIPLE values
-  * Other erros related download library
+description: Bug in Download Library
 title: "[BUG:LIB:DL] -  "
 labels: ["Bug:DL", "Bug"]
 body:
