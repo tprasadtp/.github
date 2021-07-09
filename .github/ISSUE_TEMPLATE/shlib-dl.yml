@@ -1,13 +1,21 @@
 name: Bug Report - Download Library
-description: Error in mapping architecture/os to GOOS/GOARCH/GOARM or SYSTEM ARCH TRIPLE values
+description: |
+  * Errors in mapping architecture/os to GOOS/GOARCH/GOARM
+  * Errors in detecting SYSTEM ARCH TRIPLE values
+  * Other erros related download library
 title: "[BUG:LIB:DL] -  "
 labels: ["Bug:DL", "Bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! 
-        Please leave the prefilled title prefix as-is.
+        - Thanks for taking the time to fill out this bug report!
+        - Please leave the prefilled title prefix as-is.
+        - Unless overidden by scripts, library should print out and
+          generate a clickable link or displayed a url which,
+          should have pre-filled most of this form!
+        - If for some reason, the link does not work,
+          fill out the values manually.
 
   # uname-s
   - type: input
@@ -68,17 +76,84 @@ body:
         - 7
         - 8
         - ERROR-UNKNOWN
-        - None (not an ARM-32 bit system)      
+        - NA (not an ARM-32 bit system)
     validations:
       required: true
+
+  # Download handler
+  - type: dropdown
+    id: download-handler
+    attributes:
+      label: Download Handler
+      options:
+        - curl
+        - wget
+        - ERROR
+    validations:
+      required: true
+
+  - type: textarea
+    id: curl-version
+    attributes:
+      label: Version of curl/libcurl
+      description: |
+        ## Version of curl
+          - Paste the output of command `curl --version`
+          - If you are not using curl as is the case with busybox based distros,
+            you can leave this field empty or as is.
+      value: NA
+
+  - type: textarea
+    id: wget-version
+    attributes:
+      label: Version of wget
+      description: |
+        ## Version of wget
+          - Paste the output of command `wget --version`
+          - If you are not using curl you can leave this field empty or as is.
+      value: NA
+
+  - type: checkboxes
+    id: checksum-type
+    attributes:
+      label: Checksum Type
+      description: |
+        ## Types of checksum verification
+        - Please check all the checksums which apply
+      options:
+        - label: None
+        - label: MD5
+        - label: SHA1
+        - label: SHA256
+        - label: SHA512
 
   # Logs
   - type: textarea
     id: logs
     attributes:
       label: Relevant log output
-      description: Please copy and paste output of script. or snippet which the log message asked your to include
+      description: |
+        ## What do you see when you run the script with debug logs enabled?
+        You can try one of the following to get debug logs,
+        - Try this `export LOG_LVL=0; eport LOG_FMT="long"` before running your script
+        - Use installer's debug logs option if available.
       render: shell
+
+  - type: textarea
+    id: script-content
+    attributes:
+      label: Link or contetns of the script which caused the error
+      description: |
+        ## What script were you running which caused the error?
+        - You can specify a link to the script which caused the error.
+        - Contributors cannot run the script due to security reasons and such,
+          but can only look at it and provide feedback necessary.
+        - If you cannot provide a script because its private or policy,
+          Please provide a minimum working example which triggers the issue.
+      render: shell
+    validations:
+      required: true
+
 
   - type: textarea
     id: additional-info
@@ -90,8 +165,8 @@ body:
     id: terms
     attributes:
       label: Code of Conduct
-      description: | 
-        By submitting this issue, you agree to follow code of conduct for this repository. 
+      description: |
+        By submitting this issue, you agree to follow code of conduct for this repository.
         In case the repository is missing code of conduct, Contributor Covenant code of conduct applies.
       options:
         - label: I agree to follow this project's Code of Conduct
