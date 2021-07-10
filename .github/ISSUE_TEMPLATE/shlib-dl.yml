@@ -114,13 +114,12 @@ body:
           - If you are not using wget you can leave this field empty or as is.
       value: NA
 
-
   - type: checkboxes
-    id: checksum-type
+    id: checksum-algorithm
     attributes:
-      label: Checksum Type
+      label: Checksum Algorithm
       description: |
-        - Please check all the checksums which apply
+        - Please check all the algorithms which apply
         - If you are not using checksum verification, you can leave this field empty or as is.
       options:
         - label: MD5
@@ -129,17 +128,37 @@ body:
         - label: SHA512
 
   - type: checkboxes
-    id: checksum-location
+    id: checksum-provider
     attributes:
       label: How was the checksum or checksum file provided?
-      description: |
-        - Location of checksums.
-        - Checksums can be raw checksusm, or local checksum files or checksum file urls.
       options:
-        - label: Raw Hash
-        - label: File
-        - label: URL (Hash only)
-        - label: URL (Checksum file)
+        - label: Hash URL
+        - label: Checksum File URL
+
+
+  # GPG handler
+  - type: dropdown
+    id: gpg-handler
+    attributes:
+      label: GPG Signature Verification Handler
+      options:
+        - gpgv
+        - gpg
+        - ERROR
+
+
+  - type: checkboxes
+    id: gpg-key-location
+    attributes:
+      label: How were the GPG keys provided?
+      description: |
+        - Location of GPG Keys
+      options:
+        - label: Default Keyring
+        - label: Local custom keyring file
+        - label: GPG Key ID
+        - label: URL to file containing GPG key
+
 
   # Logs
   - type: textarea
