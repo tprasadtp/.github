@@ -49,7 +49,7 @@ body:
         - freebsd
         - netbsd
         - dragonflybsd
-        - Error/Unknown
+        - Unknown
     validations:
       required: true
 
@@ -62,7 +62,7 @@ body:
         - arm64
         - 386
         - arm
-        - Error/Unknown
+        - Unknown
     validations:
       required: true
 
@@ -76,7 +76,7 @@ body:
         - 7
         - 8
         - Error
-        - None (not an ARM-32 bit system)
+        - Not an ARM-32 bit system
     validations:
       required: true
 
@@ -121,27 +121,24 @@ body:
         - If you are not using checksum verification, you can leave this field empty or as is.
       multiple: true
       options:
-        - label: NA
         - label: MD5
         - label: SHA1
         - label: SHA256
         - label: SHA512
 
-  - type: dropdown
+  - type: checkboxes
     id: checksum-location
     attributes:
       label: Checksum Location
       description: |
         - Location of checksums.
         - Checksums can be raw checksusm, or local checksum files or checksum file urls.
-        - If you are not using checksum verification, you can leave this field empty or as is.
       multiple: true
       options:
-        - NA
-        - Raw hash value
-        - Local file
-        - Remote URL (Raw Hash value)
-        - Remote URL (Checksum file)
+        - label: Raw Hash
+        - label: File
+        - lable: URL (Hash only)
+        - label: URL (Checksum file)
 
   # Logs
   - type: textarea
