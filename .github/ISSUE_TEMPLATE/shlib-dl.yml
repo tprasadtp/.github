@@ -111,14 +111,17 @@ body:
           - If you are not using curl you can leave this field empty or as is.
       value: NA
 
+
   - type: checkboxes
     id: checksum-type
     attributes:
       label: Checksum Type
       description: |
         - Please check all the checksums which apply
+        - If you are not using checksum verification, you can leave this field empty or as is.
+      value: NA
       options:
-        - label: None
+        - label: NA
         - label: MD5
         - label: SHA1
         - label: SHA256
@@ -131,14 +134,14 @@ body:
       description: |
         - Location of checksums.
         - Checksums can be raw checksusm, or local checksum files or checksum file urls.
+        - If you are not using checksum verification, you can leave this field empty or as is.
+      value: NA
       options:
         - Raw hash value
         - Local file
         - Remote URL (Raw Hash value)
         - Remote URL (Checksum file)
-        - None
-    validations:
-      required: true
+        - NA
 
   # Logs
   - type: textarea
