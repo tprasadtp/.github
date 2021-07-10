@@ -119,7 +119,6 @@ body:
       description: |
         - Please check all the checksums which apply
         - If you are not using checksum verification, you can leave this field empty or as is.
-      multiple: true
       options:
         - label: MD5
         - label: SHA1
@@ -129,15 +128,14 @@ body:
   - type: checkboxes
     id: checksum-location
     attributes:
-      label: Checksum Location
+      label: How was the checksum or checksum file provided?
       description: |
         - Location of checksums.
         - Checksums can be raw checksusm, or local checksum files or checksum file urls.
-      multiple: true
       options:
         - label: Raw Hash
         - label: File
-        - lable: URL (Hash only)
+        - label: URL (Hash only)
         - label: URL (Checksum file)
 
   # Logs
