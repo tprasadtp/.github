@@ -1,8 +1,5 @@
 name: Bug Report - Download Library
-description: |
-  * Errors in mapping architecture/os to GOOS/GOARCH/GOARM
-  * Errors in detecting SYSTEM ARCH TRIPLE values
-  * Other erros related download library
+description: Report a bug in lshlib/dl library.
 title: "[BUG:LIB:DL] -  "
 labels: ["Bug:DL", "Bug"]
 body:
@@ -22,7 +19,9 @@ body:
     id: uname-s
     attributes:
       label: System Type
-      description: Output of `uname -s` command. If unable to detect or not applicable, leave the field as is.
+      description: |
+        - Output of `uname -s` command.
+        - If unable to detect or not applicable, leave the field as is.
       value: NA
     validations:
       required: true
@@ -32,7 +31,9 @@ body:
     id: uname-m
     attributes:
       label: System Architecture
-      description: Output of `uname -m` command. If unable to detect or not applicable, leave the field as is.
+      description: |
+        - Output of `uname -m` command.
+        - If unable to detect or not applicable, leave the field as is.
       value: NA
     validations:
       required: true
@@ -69,7 +70,10 @@ body:
   - type: dropdown
     id: detected-goarm
     attributes:
-      label: Detected GOARM value (This value is not displayed or popluated if not applicable)
+      label: Detected GOARM value
+      description: |
+        - GOARM is only required on ARM-32 bit systems
+        - This value is not displayed/popluated if not applicable
       options:
         - 5
         - 6
@@ -98,8 +102,7 @@ body:
       label: Version of curl/libcurl
       description: |
           - Paste the output of command `curl --version`
-          - If you are not using curl as is the case with busybox based distros,
-            you can leave this field empty or as is.
+          - If you are not using curl as is the case with busybox based distros, you can leave this field empty or as is.
       value: NA
 
   - type: textarea
@@ -108,7 +111,7 @@ body:
       label: Version of wget
       description: |
           - Paste the output of command `wget --version`
-          - If you are not using curl you can leave this field empty or as is.
+          - If you are not using wget you can leave this field empty or as is.
       value: NA
 
 
@@ -158,10 +161,8 @@ body:
         ## What script were you running which caused the error?
 
         - You can specify a link to the script which caused the error.
-        - Contributors cannot run the script due to security reasons,
-          but can only look at it and provide feedback necessary.
-        - If you cannot provide a script because its private or due to policy,
-          Please provide a minimum working example which triggers the issue.
+        - Contributors cannot run the script due to security reasons, but can only look at it and provide feedback necessary.
+        - If you cannot provide a script because its private or due to policy, Please provide a minimum working example which triggers the issue.
       render: shell
     validations:
       required: true
