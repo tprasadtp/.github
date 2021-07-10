@@ -119,7 +119,7 @@ body:
       description: |
         - Please check all the checksums which apply
         - If you are not using checksum verification, you can leave this field empty or as is.
-      value: NA
+      multiple: true
       options:
         - label: NA
         - label: MD5
@@ -135,13 +135,13 @@ body:
         - Location of checksums.
         - Checksums can be raw checksusm, or local checksum files or checksum file urls.
         - If you are not using checksum verification, you can leave this field empty or as is.
-      value: NA
+      multiple: true
       options:
+        - NA
         - Raw hash value
         - Local file
         - Remote URL (Raw Hash value)
         - Remote URL (Checksum file)
-        - NA
 
   # Logs
   - type: textarea
@@ -165,12 +165,11 @@ body:
         - You can specify a link to the script which caused the error.
         - Contributors cannot run the script due to security reasons,
           but can only look at it and provide feedback necessary.
-        - If you cannot provide a script because its private or policy,
+        - If you cannot provide a script because its private or due to policy,
           Please provide a minimum working example which triggers the issue.
       render: shell
     validations:
       required: true
-
 
   - type: textarea
     id: additional-info
