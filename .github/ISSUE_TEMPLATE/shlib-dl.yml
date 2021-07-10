@@ -1,5 +1,8 @@
 name: Bug Report - Download Library
-description: Bug in Download Library
+description: |
+  * Errors in mapping architecture/os to GOOS/GOARCH/GOARM
+  * Errors in detecting SYSTEM ARCH TRIPLE values
+  * Other erros related download library
 title: "[BUG:LIB:DL] -  "
 labels: ["Bug:DL", "Bug"]
 body:
@@ -16,7 +19,7 @@ body:
 
   # uname-s
   - type: input
-    id: uname-s-output
+    id: uname-s
     attributes:
       label: System Type
       description: Output of `uname -s` command. If unable to detect or not applicable, leave the field as is.
@@ -26,7 +29,7 @@ body:
 
   # uname-m
   - type: input
-    id: uname-m-output
+    id: uname-m
     attributes:
       label: System Architecture
       description: Output of `uname -m` command. If unable to detect or not applicable, leave the field as is.
@@ -36,7 +39,7 @@ body:
 
   # detected values
   - type: dropdown
-    id: goos-value
+    id: detected-goos
     attributes:
       label: Detected GOOS value
       options:
@@ -46,12 +49,12 @@ body:
         - freebsd
         - netbsd
         - dragonflybsd
-        - ERROR-UNKNOWN
+        - Error/Unknown
     validations:
       required: true
 
   - type: dropdown
-    id: goarch-value
+    id: detected-goarch
     attributes:
       label: Detected GOARCH value
       options:
@@ -59,12 +62,12 @@ body:
         - arm64
         - 386
         - arm
-        - ERROR-UNKNOWN
+        - Error/Unknown
     validations:
       required: true
 
   - type: dropdown
-    id: goarm-value
+    id: detected-goarm
     attributes:
       label: Detected GOARM value (This value is not displayed or popluated if not applicable)
       options:
@@ -72,8 +75,8 @@ body:
         - 6
         - 7
         - 8
-        - ERROR-UNKNOWN
-        - NA (not an ARM-32 bit system)
+        - Error
+        - None (not an ARM-32 bit system)
     validations:
       required: true
 
@@ -94,7 +97,6 @@ body:
     attributes:
       label: Version of curl/libcurl
       description: |
-        ## Version of curl
           - Paste the output of command `curl --version`
           - If you are not using curl as is the case with busybox based distros,
             you can leave this field empty or as is.
@@ -105,7 +107,6 @@ body:
     attributes:
       label: Version of wget
       description: |
-        ## Version of wget
           - Paste the output of command `wget --version`
           - If you are not using curl you can leave this field empty or as is.
       value: NA
@@ -115,7 +116,6 @@ body:
     attributes:
       label: Checksum Type
       description: |
-        ## Types of checksum verification
         - Please check all the checksums which apply
       options:
         - label: None
@@ -123,6 +123,22 @@ body:
         - label: SHA1
         - label: SHA256
         - label: SHA512
+
+  - type: dropdown
+    id: checksum-location
+    attributes:
+      label: Checksum Location
+      description: |
+        - Location of checksums.
+        - Checksums can be raw checksusm, or local checksum files or checksum file urls.
+      options:
+        - Raw hash value
+        - Local file
+        - Remote URL (Raw Hash value)
+        - Remote URL (Checksum file)
+        - None
+    validations:
+      required: true
 
   # Logs
   - type: textarea
@@ -137,13 +153,14 @@ body:
       render: shell
 
   - type: textarea
-    id: script-content
+    id: script
     attributes:
-      label: Link or contetns of the script which caused the error
+      label: Link or contents of the script which caused the error
       description: |
         ## What script were you running which caused the error?
+
         - You can specify a link to the script which caused the error.
-        - Contributors cannot run the script due to security reasons and such,
+        - Contributors cannot run the script due to security reasons,
           but can only look at it and provide feedback necessary.
         - If you cannot provide a script because its private or policy,
           Please provide a minimum working example which triggers the issue.
@@ -159,7 +176,7 @@ body:
       description: Any additional details like steps to reproduce intermittant bugs, race conditions etc.
 
   - type: checkboxes
-    id: terms
+    id: code-of-conduct
     attributes:
       label: Code of Conduct
       description: |
